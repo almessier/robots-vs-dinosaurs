@@ -9,4 +9,4 @@ class Robot:
         self.weapon = laser_sword
 
     def attack(self, dinosaur):
-        dinosaur.health - self.weapon.attack_power
+        dinosaur.health = dinosaur.health - self.weapon.attack_power

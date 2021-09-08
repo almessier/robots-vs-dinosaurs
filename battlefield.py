@@ -15,15 +15,17 @@ class Battlefield:
         print('Welcome to Robots vs Dinosaurs!')
 
     def battle(self):
-        user_dino_index = input(
-            'Which dinosaur do you want to attack with? Type 1 for tyrannosaurus rex, 2 for triceratops, and 3 for velociraptor: ')
-        user_dino = self.herd.dinosaurs[int(user_dino_index) - 1]
-        self.dino_turn(user_dino)
+        while():
+            user_dino_index = input(
+                'Which dinosaur do you want to attack with? Type 1 for tyrannosaurus rex, 2 for triceratops, and 3 for velociraptor: ')
+            user_dino = self.herd.dinosaurs[int(user_dino_index) - 1]
+            self.dino_turn(user_dino)
 
-        user_robo_index = input(
-            'Which robot do you want to attack with? Type 1 for R2-D2, 2 for WALL-E, and 3 for Rosie: ')
-        user_robo = self.fleet.robots[int(user_robo_index) - 1]
-        self.robo_turn(user_robo)
+            user_robo_index = input(
+                'Which robot do you want to attack with? Type 1 for R2-D2, 2 for WALL-E, and 3 for Rosie: ')
+            user_robo = self.fleet.robots[int(user_robo_index) - 1]
+            self.robo_turn(user_robo)
+        self.display_winners()
 
     def dino_turn(self, dinosaur):
         self.show_dino_opponent_options()
