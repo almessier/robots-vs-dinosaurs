@@ -3,9 +3,10 @@ from weapon import Weapon
 
 class Robot:
     def __init__(self, name):
+        laser_sword = Weapon('laser sword', 25)
         self.name = name
         self.health = 100
-        self.weapon = Weapon()
+        self.weapon = laser_sword
 
     def attack(self, dinosaur):
-        pass
+        dinosaur.health - self.weapon.attack_power
