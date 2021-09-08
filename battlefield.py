@@ -8,10 +8,15 @@ class Battlefield:
         self.herd = Herd()
 
     def run_game(self):
-        pass
+        herd = Herd()
+        herd.create_herd()
+        fleet = Fleet()
+        fleet.create_fleet()
+        self.display_welcome()
+        self.battle()
 
     def display_welcome(self):
-        pass
+        print('Welcome to Robots vs Dinosaurs!')
 
     def battle(self):
         pass
