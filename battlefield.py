@@ -19,7 +19,12 @@ class Battlefield:
         print('Welcome to Robots vs Dinosaurs!')
 
     def battle(self):
-        pass
+        user_dino = input(
+            'Which dinosaur do you want to attack with? Type 1 for tyrannosaurus rex, 2 for triceratops, and 3 for velociraptor.')
+        self.dino_turn(user_dino)
+        user_robo = input(
+            'Which robot do you want to attack with? Type 1 for R2-D2, 2 for WALL-E, and 3 for Rosie.')
+        self.robo_turn(user_robo)
 
     def dino_turn(self, dinosaur):
         pass
