@@ -24,7 +24,7 @@ class Battlefield:
                 user_dino_index = input(
                     'Which dinosaur do you want to attack with? Type 1 for Tyrannosaurus Rex, 2 for Triceratops, and 3 for Velociraptor: ')
                 if (int(user_dino_index) != 1 and int(user_dino_index) != 2 and int(user_dino_index) != 3):
-                    print('Invalid input, Type 1, 2, or 3')
+                    print('Invalid input. Type 1, 2, or 3.')
                 elif (self.herd.dinosaurs[int(user_dino_index) - 1].health <= 0):
                     print('That dinosaur is dead! Pick another dinosaur.')
                 else:
@@ -47,7 +47,7 @@ class Battlefield:
                 user_robo_index = input(
                     'Which robot do you want to attack with? Type 1 for R2-D2, 2 for WALL-E, and 3 for Rosie: ')
                 if (int(user_robo_index) != 1 and int(user_robo_index) != 2 and int(user_robo_index) != 3):
-                    print('Invalid input, Type 1, 2, or 3')
+                    print('Invalid input. Type 1, 2, or 3.')
                 elif (self.fleet.robots[int(user_robo_index) - 1].health <= 0):
                     print('That robot is spare parts! Pick another robot.')
                 else:
@@ -72,17 +72,28 @@ class Battlefield:
         while(valid == False):
             user_attack = input(': ')
             if (int(user_attack) != 1 and int(user_attack) != 2 and int(user_attack) != 3):
-                print('Invalid input, Type 1, 2, or 3')
+                print('Invalid input. Type 1, 2, or 3.')
             elif (self.fleet.robots[int(user_attack) - 1].health <= 0):
                 print('That robot is spare parts! Pick another robot.')
             else:
                 valid = True
 
+        # Receive dinosaur attack name selection from user and validate it
+        valid = False
+        while(valid == False):
+            user_attack_index = input(
+                'Which attack do you want? 1 for Charge, 2 for Bite, and 3 for Tail Whip: ')
+            if (int(user_attack_index) != 1 and int(user_attack_index) != 2 and int(user_attack_index) != 3):
+                print('Invalid input. Type 1, 2, or 3.')
+            else:
+                valid = True
+        user_attack_name = dinosaur.attacks[int(user_attack_index) - 1]
+
         dinosaur.attack(self.fleet.robots[int(user_attack) - 1])
 
         # Print results of attack
         print(
-            f'{dinosaur.name} attacked {self.fleet.robots[int(user_attack) - 1].name} for {dinosaur.attack_power} damage.')
+            f'{dinosaur.name} attacked {self.fleet.robots[int(user_attack) - 1].name} for {dinosaur.attack_power} damage with {user_attack_name}.')
         if self.fleet.robots[int(user_attack) - 1].health <= 0:
             print(
                 f'{self.fleet.robots[int(user_attack) - 1].name} has been defeated!')
@@ -95,7 +106,7 @@ class Battlefield:
         while(valid == False):
             user_attack = input(': ')
             if (int(user_attack) != 1 and int(user_attack) != 2 and int(user_attack) != 3):
-                print('Invalid input, Type 1, 2, or 3')
+                print('Invalid input. Type 1, 2, or 3.')
             elif (self.herd.dinosaurs[int(user_attack) - 1].health <= 0):
                 print('That dinosaur is dead! Pick another dinosaur.')
             else:

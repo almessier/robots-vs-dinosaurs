@@ -23,7 +23,7 @@ class Fleet:
             valid = False
             while(valid == False):
                 user_input = input(
-                    f'Which weapon do you want on {robo.name}? Type 1 for Oribital Ion Cannon, 2 for Laser Sword, or 3 for Radiation Gun. ')
+                    f'Which weapon do you want on {robo.name}? Type 1 for Oribital Ion Cannon, 2 for Laser Sword, or 3 for Radiation Gun: ')
                 if int(user_input) == 1:
                     robo.weapon = weapons[0]
                     valid = True
@@ -34,4 +34,4 @@ class Fleet:
                     robo.weapon = weapons[2]
                     valid = True
                 else:
-                    print('Invalid input, try again.')
+                    print('Invalid input. Type 1, 2, or 3.')
