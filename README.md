@@ -1,1 +1,1 @@
-# robots-vs-dinosaurs
+Robots vs Dinosaurs! A console game that is a battle between three dinosaurs and three robots written in Python.

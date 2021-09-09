@@ -89,11 +89,14 @@ class Battlefield:
                 valid = True
         user_attack_name = dinosaur.attacks[int(user_attack_index) - 1]
 
+        # Attack
         dinosaur.attack(self.fleet.robots[int(user_attack) - 1])
+        dinosaur.energy = dinosaur.energy - 10
 
         # Print results of attack
         print(
             f'{dinosaur.name} attacked {self.fleet.robots[int(user_attack) - 1].name} for {dinosaur.attack_power} damage with {user_attack_name}.')
+        print(f'{dinosaur.name} has {dinosaur.energy} energy left.')
         if self.fleet.robots[int(user_attack) - 1].health <= 0:
             print(
                 f'{self.fleet.robots[int(user_attack) - 1].name} has been defeated!')
@@ -112,11 +115,14 @@ class Battlefield:
             else:
                 valid = True
 
+        # Attack
         robot.attack(self.herd.dinosaurs[int(user_attack) - 1])
+        robot.power_level = robot.power_level - 10
 
         # Print results of attack
         print(
             f'{robot.name} attacked {self.herd.dinosaurs[int(user_attack) - 1].name} for {robot.weapon.attack_power} damage with the {robot.weapon.name}.')
+        print(f'{robot.name} now has a power level of {robot.power_level}.')
         if self.herd.dinosaurs[int(user_attack) - 1].health <= 0:
             print(
                 f'{self.herd.dinosaurs[int(user_attack) - 1].name} has been defeated!')
