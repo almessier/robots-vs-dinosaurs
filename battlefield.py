@@ -16,12 +16,13 @@ class Battlefield:
         print('Welcome to Robots vs Dinosaurs!')
 
     def battle(self):
+        self.fleet.assign_weapons()
         while(True):
             # Receive dinosaur selection from user and validate it
             valid = False
             while(valid == False):
                 user_dino_index = input(
-                    'Which dinosaur do you want to attack with? Type 1 for Tyrannosaurus rex, 2 for Triceratops, and 3 for Velociraptor: ')
+                    'Which dinosaur do you want to attack with? Type 1 for Tyrannosaurus Rex, 2 for Triceratops, and 3 for Velociraptor: ')
                 if (int(user_dino_index) != 1 and int(user_dino_index) != 2 and int(user_dino_index) != 3):
                     print('Invalid input, Type 1, 2, or 3')
                 elif (self.herd.dinosaurs[int(user_dino_index) - 1].health <= 0):
@@ -104,7 +105,7 @@ class Battlefield:
 
         # Print results of attack
         print(
-            f'{robot.name} attacked {self.herd.dinosaurs[int(user_attack) - 1].name} for {robot.weapon.attack_power} damage.')
+            f'{robot.name} attacked {self.herd.dinosaurs[int(user_attack) - 1].name} for {robot.weapon.attack_power} damage with the {robot.weapon.name}.')
         if self.herd.dinosaurs[int(user_attack) - 1].health <= 0:
             print(
                 f'{self.herd.dinosaurs[int(user_attack) - 1].name} has been defeated!')
