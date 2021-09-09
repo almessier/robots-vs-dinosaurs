@@ -22,7 +22,7 @@ class Battlefield:
             while(valid == False):
                 user_dino_index = input(
                     'Which dinosaur do you want to attack with? Type 1 for Tyrannosaurus rex, 2 for Triceratops, and 3 for Velociraptor: ')
-                if (user_dino_index != 1 or 2 or 3):
+                if (int(user_dino_index) != 1 and int(user_dino_index) != 2 and int(user_dino_index) != 3):
                     print('Invalid input, Type 1, 2, or 3')
                 elif (self.herd.dinosaurs[int(user_dino_index) - 1].health <= 0):
                     print('That dinosaur is dead! Pick another dinosaur.')
@@ -45,10 +45,10 @@ class Battlefield:
             while(valid == False):
                 user_robo_index = input(
                     'Which robot do you want to attack with? Type 1 for R2-D2, 2 for WALL-E, and 3 for Rosie: ')
-                if (user_robo_index != 1 or 2 or 3):
+                if (int(user_robo_index) != 1 and int(user_robo_index) != 2 and int(user_robo_index) != 3):
                     print('Invalid input, Type 1, 2, or 3')
                 elif (self.fleet.robots[int(user_robo_index) - 1].health <= 0):
-                    print('That robot is dead! Pick another robot.')
+                    print('That robot is spare parts! Pick another robot.')
                 else:
                     valid = True
 
@@ -71,7 +71,7 @@ class Battlefield:
 
         # Print results of attack
         print(
-            f'{dinosaur.name} attacked {self.fleet.robots[int(user_attack) - 1].name} for {dinosaur.attack_power}')
+            f'{dinosaur.name} attacked {self.fleet.robots[int(user_attack) - 1].name} for {dinosaur.attack_power} damage')
         if self.fleet.robots[int(user_attack) - 1].health <= 0:
             print(
                 f'{self.fleet.robots[int(user_attack) - 1].name} has been defeated!')
@@ -84,7 +84,7 @@ class Battlefield:
 
         # Print results of attack
         print(
-            f'{robot.name} attacked {self.herd.dinosaurs[int(user_attack) - 1].name} for {robot.weapon.attack_power}')
+            f'{robot.name} attacked {self.herd.dinosaurs[int(user_attack) - 1].name} for {robot.weapon.attack_power} damage')
         if self.herd.dinosaurs[int(user_attack) - 1].health <= 0:
             print(
                 f'{self.herd.dinosaurs[int(user_attack) - 1].name} has been defeated!')
