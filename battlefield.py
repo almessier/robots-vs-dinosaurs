@@ -17,7 +17,7 @@ class Battlefield:
 
     def battle(self):
         while(True):
-            # Receive dinosaur attack from user and validate it
+            # Receive dinosaur selection from user and validate it
             valid = False
             while(valid == False):
                 user_dino_index = input(
@@ -40,7 +40,7 @@ class Battlefield:
             if count == 3:
                 break
 
-            # Receive robot attack from user and validate it
+            # Receive robot selection from user and validate it
             valid = False
             while(valid == False):
                 user_robo_index = input(
@@ -66,12 +66,22 @@ class Battlefield:
     def dino_turn(self, dinosaur):
         self.show_dino_opponent_options()
 
-        user_attack = input(': ')
+        # Receive dinosaur attack from user and validate it
+        valid = False
+        while(valid == False):
+            user_attack = input(': ')
+            if (int(user_attack) != 1 and int(user_attack) != 2 and int(user_attack) != 3):
+                print('Invalid input, Type 1, 2, or 3')
+            elif (self.fleet.robots[int(user_attack) - 1].health <= 0):
+                print('That robot is spare parts! Pick another robot.')
+            else:
+                valid = True
+
         dinosaur.attack(self.fleet.robots[int(user_attack) - 1])
 
         # Print results of attack
         print(
-            f'{dinosaur.name} attacked {self.fleet.robots[int(user_attack) - 1].name} for {dinosaur.attack_power} damage')
+            f'{dinosaur.name} attacked {self.fleet.robots[int(user_attack) - 1].name} for {dinosaur.attack_power} damage.')
         if self.fleet.robots[int(user_attack) - 1].health <= 0:
             print(
                 f'{self.fleet.robots[int(user_attack) - 1].name} has been defeated!')
@@ -79,12 +89,22 @@ class Battlefield:
     def robo_turn(self, robot):
         self.show_robo_opponent_options()
 
-        user_attack = input(': ')
+        # Receive robot attack from user and validate it
+        valid = False
+        while(valid == False):
+            user_attack = input(': ')
+            if (int(user_attack) != 1 and int(user_attack) != 2 and int(user_attack) != 3):
+                print('Invalid input, Type 1, 2, or 3')
+            elif (self.herd.dinosaurs[int(user_attack) - 1].health <= 0):
+                print('That dinosaur is dead! Pick another dinosaur.')
+            else:
+                valid = True
+
         robot.attack(self.herd.dinosaurs[int(user_attack) - 1])
 
         # Print results of attack
         print(
-            f'{robot.name} attacked {self.herd.dinosaurs[int(user_attack) - 1].name} for {robot.weapon.attack_power} damage')
+            f'{robot.name} attacked {self.herd.dinosaurs[int(user_attack) - 1].name} for {robot.weapon.attack_power} damage.')
         if self.herd.dinosaurs[int(user_attack) - 1].health <= 0:
             print(
                 f'{self.herd.dinosaurs[int(user_attack) - 1].name} has been defeated!')
